@@ -5,7 +5,9 @@
 
 # testing
 /coverage
-
+/public
+/src/components/NewRepoForm.react_test.js
+/src/pages/Dashboard.react_test.js
 # production
 /build
 
