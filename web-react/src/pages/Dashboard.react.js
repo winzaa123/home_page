@@ -18,8 +18,17 @@ class Dashboard extends React.Component {
         };
         this.RepoClick = this.RepoClick.bind(this);
         this.TextChange = this.TextChange.bind(this);
+      
+        this.btnremoveRepo = this.btnremoveRepo.bind(this);
     }
- 
+    btnremoveRepo(value,e){
+        const arr_repo =this.state.repositoryNames ;
+        let id_index= arr_repo.findIndex(repo => repo ===value.full_name);
+        arr_repo.splice(id_index,1);
+        this.setState({ repositoryNames : arr_repo});
+      
+     
+    }
  
     
     RepoClick(e) {
@@ -38,7 +47,7 @@ class Dashboard extends React.Component {
         return (
             <div>
                 <NewRepoForm repositoryArrays={repositoryArray}  handleClick={this.RepoClick} handleChange={this.TextChange}  />
-                <RepositoryList repositoryArrays={repositoryArray} />
+                <RepositoryList repositoryArrays={repositoryArray} ClickRemove={this.btnremoveRepo} />
             </div>
         )
     }

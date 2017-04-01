@@ -6,7 +6,9 @@ class RepositoryListItem extends React.Component {
     state = {
         repository: this.props.repositoryName
     }
-
+     getInitialState () {
+     console.log(123);
+  }
     componentDidMount() {        
        this.state.repository.then(res=>{
             if(res["message"]==="Not Found"){
@@ -27,7 +29,7 @@ class RepositoryListItem extends React.Component {
             watchers_count,
             organization = {}   // firsttime not value {} = for Decalre
          } = this.state.repository
-
+        const EventClick = this.props.ClickRemove.bind(this, this.state.repository);
         return (
             <div className="box">
                 <article className="media">
@@ -38,6 +40,7 @@ class RepositoryListItem extends React.Component {
                     </div>
                     <div className="media-content">
                         <div className="content">
+                             <button className="delete is-pulled-right"  onClick={EventClick}  > </button>
                             <p>
                                 <strong><a className="title" href="#/frontend-war-react/facebook/react">
                                 { full_name }
