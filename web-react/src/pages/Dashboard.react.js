@@ -46,6 +46,7 @@ class Dashboard extends React.Component {
           var repositoryArray = this.state.repositoryNames;
         return (
             <div>
+               
                 <NewRepoForm repositoryArrays={repositoryArray}  handleClick={this.RepoClick} handleChange={this.TextChange}  />
                 <RepositoryList repositoryArrays={repositoryArray} ClickRemove={this.btnremoveRepo} />
             </div>

@@ -1,14 +1,12 @@
 import React from 'react'
 //   import { fetchRepository } from 'api'
-
+import {Link} from 'react-router-dom'
 class RepositoryListItem extends React.Component {
 
     state = {
         repository: this.props.repositoryName
     }
-     getInitialState () {
-     console.log(123);
-  }
+ 
     componentDidMount() {        
        this.state.repository.then(res=>{
             if(res["message"]==="Not Found"){
@@ -18,7 +16,9 @@ class RepositoryListItem extends React.Component {
             this.setState({repository: res});
        });
     }
- 
+ componentWillUnmount () {
+    console.log("123");
+    }
     render() {
         const { 
             full_name = "Loading...",
@@ -30,6 +30,7 @@ class RepositoryListItem extends React.Component {
             organization = {}   // firsttime not value {} = for Decalre
          } = this.state.repository
         const EventClick = this.props.ClickRemove.bind(this, this.state.repository);
+        const link_star = "/Stargazer/"+full_name;
         return (
             <div className="box">
                 <article className="media">
@@ -42,7 +43,7 @@ class RepositoryListItem extends React.Component {
                         <div className="content">
                              <button className="delete is-pulled-right"  onClick={EventClick}  > </button>
                             <p>
-                                <strong><a className="title" href="#/frontend-war-react/facebook/react">
+                                <strong><a className="title" href="/">
                                 { full_name }
                                 </a></strong>
                             </p>
@@ -58,8 +59,10 @@ class RepositoryListItem extends React.Component {
                 <nav className="level is-mobile">
                     <div className="level-item has-text-centered">
                         <div>
-                            <p className="heading">Stars</p>
-                            <a className="title" href="#/frontend-war-react/">{ stargazers_count }</a>
+                            <Link  className="title"  to={link_star}    >
+                            <p className="heading">Stars </p>
+                            { stargazers_count }
+                            </Link>
                         </div>
                     </div>
                     <div className="level-item has-text-centered">
