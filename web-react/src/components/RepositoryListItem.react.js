@@ -1,10 +1,13 @@
 import React from 'react'
 //   import { fetchRepository } from 'api'
 import {Link} from 'react-router-dom'
+import ListLoading from './RepositolyListLoading.react.js'
+
 class RepositoryListItem extends React.Component {
 
     state = {
-        repository: this.props.repositoryName
+        repository: this.props.repositoryName,
+        _isready : true
     }
  
     componentDidMount() {        
@@ -14,10 +17,8 @@ class RepositoryListItem extends React.Component {
                 
             }
             this.setState({repository: res});
+            this.setState({_isready: false});
        });
-    }
- componentWillUnmount () {
-    console.log("123");
     }
     render() {
         const { 
@@ -31,6 +32,9 @@ class RepositoryListItem extends React.Component {
          } = this.state.repository
         const EventClick = this.props.ClickRemove.bind(this, this.state.repository);
         const link_star = "/Stargazer/"+full_name;
+        if(this.state._isready){
+            return <ListLoading/>;
+        }else
         return (
             <div className="box">
                 <article className="media">
@@ -44,7 +48,7 @@ class RepositoryListItem extends React.Component {
                              <button className="delete is-pulled-right"  onClick={EventClick}  > </button>
                             <p>
                                 <strong><a className="title" href="/">
-                                { full_name }
+                                { full_name }    {this.state.test}
                                 </a></strong>
                             </p>
                             <p className="subtitle">

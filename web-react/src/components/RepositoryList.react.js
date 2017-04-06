@@ -1,6 +1,7 @@
 import React from 'react'
 import RepositoryListItem from './RepositoryListItem.react'
   import { fetchRepository } from 'api'
+
 class RepositoryList extends React.Component {
  
         state = {
@@ -15,6 +16,7 @@ class RepositoryList extends React.Component {
   }
 
     render() {
+
        var repositoryItems = this.props.repositoryArrays.map( (name) => {
        const data = fetchRepository(name)
         .then( repository => {
@@ -24,8 +26,10 @@ class RepositoryList extends React.Component {
             return <RepositoryListItem repositoryName={data} key={name} ClickRemove={this.props.ClickRemove} />
         })
         return (
+            
             <div className="section">
                 { repositoryItems }
+                
             </div>
         )
     }
