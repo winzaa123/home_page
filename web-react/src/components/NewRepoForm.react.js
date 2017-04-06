@@ -8,14 +8,14 @@ class NewRepoForm extends React.Component {
 
         return (
             <div className="section">
-                <form  >
+                <form  onSubmit={this.props.handleSubmit} >
                     <div className="field">
                 
                         <p className="control">
-                            <input className="input is-large" type="repoName" placeholder="Enter Repository Name" onChange={ this.props.handleChange }/>
+                            <input className="input is-large" type="text" placeholder="Enter Repository Name"  name='reponame'/>
                         </p>
                     </div>
-                    <button className="button is-info" onClick={this.props.handleClick }>
+                    <button className="button is-info" type="submit">
                     Add Repository
                     </button>
                 </form>

@@ -1,6 +1,8 @@
 import React from 'react'
+import ReactDOM from 'react-dom';
 import NewRepoForm from 'components/NewRepoForm.react'
 import RepositoryList from 'components/RepositoryList.react'
+
 //   import { fetchRepository } from 'api'
 
 class Dashboard extends React.Component {
@@ -16,9 +18,7 @@ class Dashboard extends React.Component {
             Reponame : "",
            
         };
-        this.RepoClick = this.RepoClick.bind(this);
-        this.TextChange = this.TextChange.bind(this);
-      
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.btnremoveRepo = this.btnremoveRepo.bind(this);
     }
     btnremoveRepo(value,e){
@@ -30,24 +30,25 @@ class Dashboard extends React.Component {
      
     }
  
-    
-    RepoClick(e) {
+    getUserInput () {
+        return ReactDOM.findDOMNode(this.userEntry).value;
+    }
+    handleSubmit(e) {
           e.preventDefault();
-        const arrayvar =this.state.repositoryNames ;
-           arrayvar.push(this.state.Reponame);
+            var form = e.target;
+            var content = form.elements['reponame'].value;
+             const arrayvar =this.state.repositoryNames ;
+           arrayvar.push(content);
             this.setState({repositoryNames: arrayvar});
  
     }
-    TextChange(e) {
-       this.setState({Reponame :e.target.value});
-    }
+
     render() {
-        
           var repositoryArray = this.state.repositoryNames;
         return (
             <div>
                
-                <NewRepoForm repositoryArrays={repositoryArray}  handleClick={this.RepoClick} handleChange={this.TextChange}  />
+                <NewRepoForm repositoryArrays={repositoryArray}  handleSubmit={this.handleSubmit}       />
                 <RepositoryList repositoryArrays={repositoryArray} ClickRemove={this.btnremoveRepo} />
             </div>
         )
