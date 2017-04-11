@@ -20,4 +20,8 @@ function fetchGitHubAPIWithPath(path) {
 export function fetchRepository(scopeName) {
   return fetchGitHubAPIWithPath(`/repos/${scopeName}`)
 }
-
+export function fetchStargazers(scopeName, page=0, per_page=30) {
+  return fetchGitHubAPIWithPath(
+    `/repos/${scopeName}/stargazers?page=${page}&per_page=${per_page}`
+  )
+}

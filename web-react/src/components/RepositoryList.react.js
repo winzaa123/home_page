@@ -23,7 +23,7 @@ class RepositoryList extends React.Component {
            return repository
         })
         // const repositoryItems = this.state.repositoryArrays.map( (name) => {
-            return <RepositoryListItem repositoryName={data} key={name} ClickRemove={this.props.ClickRemove} />
+            return <RepositoryListItem repositoryNameItem={data} key={name} ClickRemove={this.props.ClickRemove} />
         })
         return (
             

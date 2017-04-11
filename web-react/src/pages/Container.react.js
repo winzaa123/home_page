@@ -5,6 +5,8 @@ import Stargazer from './Stargazer.react';
 import About from './About.react';
 import logoBulma from "../resources/img/bulma-logo.png";
 import App from '../App';
+
+
  
 const MenuLink = ({ label, to, activeOnlyWhenExact,mobile }) => (
       <Route path={to} exact={activeOnlyWhenExact} children={({ match }) => (
@@ -60,7 +62,7 @@ class Container extends React.Component {
                           </nav>
                   <Switch>
                   <Route exact path="/" component={App}/>
-                  <Route path="/Stargazer/:userName/:repoName" component={Stargazer}   />
+                  <Route path="/Stargazer/:ownerName/:repoName" component={Stargazer}   />
                   <Route path="/About" component={About}   />
                     <Route name="404" component={error_page}/>
                 

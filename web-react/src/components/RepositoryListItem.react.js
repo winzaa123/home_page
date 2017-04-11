@@ -6,15 +6,14 @@ import ListLoading from './RepositolyListLoading.react.js'
 class RepositoryListItem extends React.Component {
 
     state = {
-        repository: this.props.repositoryName,
+        repository: this.props.repositoryNameItem,
         _isready : true
     }
  
     componentDidMount() {        
        this.state.repository.then(res=>{
             if(res["message"]==="Not Found"){
-              this.setState({repository : res.full_name="No Repo"});
-                
+              this.setState({repository : res.full_name="No Repo"});  
             }
             this.setState({repository: res});
             this.setState({_isready: false});
@@ -30,7 +29,11 @@ class RepositoryListItem extends React.Component {
             watchers_count,
             organization = {}   // firsttime not value {} = for Decalre
          } = this.state.repository
-        const EventClick = this.props.ClickRemove.bind(this, this.state.repository);
+         var EventClick,btnremove ;
+         if(this.props.ClickRemove){
+             EventClick = (this.props.ClickRemove.bind(this, this.state.repository));
+             btnremove =  <button className="delete is-pulled-right"  onClick={EventClick}  > </button> ;
+         }
         const link_star = "/Stargazer/"+full_name;
         if(this.state._isready){
             return <ListLoading/>;
@@ -45,7 +48,7 @@ class RepositoryListItem extends React.Component {
                     </div>
                     <div className="media-content">
                         <div className="content">
-                             <button className="delete is-pulled-right"  onClick={EventClick}  > </button>
+                            {btnremove}
                             <p>
                                 <strong><a className="title" href="/">
                                 { full_name }    {this.state.test}
