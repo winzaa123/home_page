@@ -6,36 +6,45 @@ import ListLoading from './RepositolyListLoading.react.js'
 class RepositoryListItem extends React.Component {
 
     state = {
-        repository: this.props.repositoryNameItem,
-        _isready : true
+        repository: {},
+       
     }
  
-    componentDidMount() {        
-       this.state.repository.then(res=>{
-            if(res["message"]==="Not Found"){
-              this.setState({repository : res.full_name="No Repo"});  
-            }
-            this.setState({repository: res});
-            this.setState({_isready: false});
-       });
-    }
+    componentDidMount() {     //old
+        // console.log( this.props.repository);
+    //     if(this.state.repository){
+    //         this.state.repository.then(res=>{
+    //         if(res["message"]==="Not Found"){
+    //           this.setState({repository : res.full_name="No Repo"});  
+    //         }
+    //         this.setState({repository: res});
+    //         this.setState({_isready: false});
+    //    });
+    //     }
+}
+  componentWillUnmount() {
+    
+  }
     render() {
         const { 
-            full_name = "Loading...",
+            full_name = "Loadings...",
+            _isReady = true,
             description,
             stargazers_count,
             open_issues_count,
             forks_count,
             watchers_count,
             organization = {}   // firsttime not value {} = for Decalre
-         } = this.state.repository
-         var EventClick,btnremove ;
+         } = this.props.repository;
+          
+         let EventClick,btnremove ;
          if(this.props.ClickRemove){
-             EventClick = (this.props.ClickRemove.bind(this, this.state.repository));
+             EventClick = (this.props.ClickRemove.bind(this, this.props.repository));
              btnremove =  <button className="delete is-pulled-right"  onClick={EventClick}  > </button> ;
          }
         const link_star = "/Stargazer/"+full_name;
-        if(this.state._isready){
+        if(_isReady){
+                //   console.log("TEST PROP STATUS");
             return <ListLoading/>;
         }else
         return (

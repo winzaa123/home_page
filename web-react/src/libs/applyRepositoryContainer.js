@@ -9,6 +9,7 @@ function mapStateToProps(state, ownProps) {
   const { repository } = state
   const { byName } = repository
   const repositoryInfo = byName[ownProps.scopeName]
+ 
   return {
     repository: repositoryInfo || {}
   }
@@ -27,13 +28,13 @@ export default function applyRepositoryContainer(RepositoryInjectableComponent) 
     componentDidMount() {
       if (Object.keys(this.props.repository).length === 0) {
         this.props.fetch()
-      }
+      } 
     }
 
     render() {
       return <RepositoryInjectableComponent {...this.props} />
     }
   }
-
+ 
   return connect(mapStateToProps, mapDispatchToProps)(AppliedRepositoryContainer)
 }
