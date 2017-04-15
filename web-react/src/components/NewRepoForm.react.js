@@ -1,5 +1,6 @@
 import React from 'react'
  
+import RepoListInput from './RepoListInput.react'
 class NewRepoForm extends React.Component {
     
 
@@ -14,6 +15,7 @@ class NewRepoForm extends React.Component {
                         <p className="control">
                             <input className="input is-large" type="text" placeholder="Enter Repository Name"  name='reponame'/>
                         </p>
+                        <RepoListInput/>
                     </div>
                     <button className="button is-info" type="submit">
                     Add Repository
@@ -24,7 +26,8 @@ class NewRepoForm extends React.Component {
     }
 
 }
- 
+
+
  
  
 export default NewRepoForm 
