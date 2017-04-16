@@ -1,0 +1,16 @@
+.input-live-search{
+            background: white;
+            position: absolute;
+            width: 47%;
+            z-index: 1;
+    .input-live-search-list{
+        cursor:pointer; 
+    }
+    .input-live-search-list .card-content{
+        padding: .5rem;
+    }
+    .input-live-search-list:hover{
+        background: #e8e8e8;
+
+    }
+}

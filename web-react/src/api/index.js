@@ -25,3 +25,7 @@ export function fetchStargazers(scopeName, page=0, per_page=30) {
     `/repos/${scopeName}/stargazers?page=${page}&per_page=${per_page}`
   )
 }
+
+export function fetchSearchRepository(scopeName) {
+  return fetchGitHubAPIWithPath(`/search/repositories?q=${scopeName}`)
+}

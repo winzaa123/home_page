@@ -20,16 +20,15 @@ class Dashboard extends React.Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.btnremoveRepo = this.btnremoveRepo.bind(this);
+ 
     }
     btnremoveRepo(value,e){
         const arr_repo =this.state.repositoryNames ;
         let id_index= arr_repo.findIndex(repo => repo ===value.full_name);
         arr_repo.splice(id_index,1);
         this.setState({ repositoryNames : arr_repo});
-      
-     
     }
- 
+
     getUserInput () {
         return ReactDOM.findDOMNode(this.userEntry).value;
     }
@@ -48,7 +47,7 @@ class Dashboard extends React.Component {
         return (
             <div>
                
-                <NewRepoForm repositoryArrays={repositoryArray}  handleSubmit={this.handleSubmit}       />
+                <NewRepoForm repositoryArrays={repositoryArray}  handleSubmit={this.handleSubmit}        />
                 <RepositoryList repositoryArrays={repositoryArray} ClickRemove={this.btnremoveRepo} />
             </div>
         )

@@ -3,19 +3,25 @@ import React from 'react'
 class RepoListItem extends React.Component {
 
     render() {
-       
+      const {
+        full_name = "Loading...",
+        owner = {},
+        description  
+      } = this.props.propResult;
     return (
-      <li className="contact">
+
+      <li className="input-live-search-list">
             <div className="card-content">
               <div className="media">
                 <div className="media-left">
                     <figure className="image is-48x48">
-                      <img src={this.props.img} alt="Image" />
+                        <img alt="" src={owner.avatar_url}/>
+                    
                     </figure>
                 </div>
                   <div className="media-content">
-                    <p className="title is-4">{this.props.name}</p>
-                    <p className="subtitle is-6">{this.props.description}</p>
+                    <p className="title is-5">{full_name}</p>
+                    <p className="subtitle is-6">{description}    </p>
                   </div>
               </div>
             </div>
