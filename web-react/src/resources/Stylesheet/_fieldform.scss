@@ -1,8 +1,10 @@
 .input-live-search{
             background: white;
             position: absolute;
-            width: 47%;
+            width: 46%;
             z-index: 1;
+            max-height: 300px;
+            overflow-y: auto;
     .input-live-search-list{
         cursor:pointer; 
     }

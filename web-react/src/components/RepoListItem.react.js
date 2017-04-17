@@ -1,16 +1,19 @@
 import React from 'react'
  
 class RepoListItem extends React.Component {
-
+ 
     render() {
       const {
         full_name = "Loading...",
         owner = {},
         description  
       } = this.props.propResult;
+      
+     
+      
     return (
 
-      <li className="input-live-search-list">
+      <li className="input-live-search-list" onClick={() => { this.props.ClickRepo(this,full_name) }} >
             <div className="card-content">
               <div className="media">
                 <div className="media-left">

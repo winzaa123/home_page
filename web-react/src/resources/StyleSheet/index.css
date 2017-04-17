@@ -23,8 +23,10 @@
 .input-live-search {
   background: white;
   position: absolute;
-  width: 47%;
-  z-index: 1; }
+  width: 46%;
+  z-index: 1;
+  max-height: 300px;
+  overflow-y: auto; }
   .input-live-search .input-live-search-list {
     cursor: pointer; }
   .input-live-search .input-live-search-list .card-content {
