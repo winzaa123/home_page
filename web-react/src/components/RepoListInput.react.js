@@ -10,12 +10,17 @@ class RepoListInput extends React.Component {
  
  
     const itemList = this.props.itemList;
- 
+    const MyRepo =  this.props.ListallRepo;
     const repositoryFormItems =  !itemList?null:itemList.map( (v) => {
-            return <RepoListItem   key={v.full_name}   propResult={v}  ClickRepo={this.props.ClickRepo} />
+                   if( MyRepo.filter( value => value === v.full_name).length===0){
+                      return <RepoListItem   key={v.full_name}   propResult={v}  ClickRepo={this.props.ClickRepo} />
+                   }else{
+                      return null;
+                   }
+          
         })    
     return (
-                 <ul className="input-live-search"  >
+                 <ul className="input-lg-live-search"  >
                              {repositoryFormItems}
                                 
                         </ul>

@@ -1,18 +1,25 @@
-.input-live-search{
+.input-lg-live-search{
             background: white;
             position: absolute;
-            width: 46%;
-            z-index: 1;
-            max-height: 300px;
-            overflow-y: auto;
-    .input-live-search-list{
+                width: 48%;
+                z-index: 1;
+                max-height: 300px;
+                overflow-y: auto;
+                margin-top: 54px;
+                border: 1px solid #dbdbdb;
+                border-top-width: 0;
+    .input-lg-live-search-list{
         cursor:pointer; 
     }
-    .input-live-search-list .card-content{
+    .input-lg-live-search-list .card-content{
         padding: .5rem;
     }
-    .input-live-search-list:hover{
+    .input-lg-live-search-list:hover{
         background: #e8e8e8;
 
     }
+}
+.field.has-addons .control {
+ 
+    width: 100%;
 }

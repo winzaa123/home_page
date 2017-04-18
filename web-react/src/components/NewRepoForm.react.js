@@ -45,22 +45,30 @@ class NewRepoForm extends React.Component {
                             })
                 }
     }
+    clear_disabled(e){
+        if(this.refs.add_repo.getAttribute("disabled"))
+        this.refs.add_repo.removeAttribute("disabled");
+    }
     render() {
             const EventClick = this.ClickChooseRepo.bind(this);
         return (
-            <div className="section column is-half">
+            <div className="section ">
                 <form  onSubmit={this.props.handleSubmit}  >
-                    <div className="field   ">
+                    <div className="field  has-addons  ">
                 
                         <p className="control">
-                            <input className="input is-large" type="text" placeholder="Enter Repository Name"  name='reponame' ref="reponame"   />
+                            <input className="input is-large" type="text" placeholder="Enter Repository Name"  name='reponame' ref="reponame" onChange={this.clear_disabled.bind(this)}    />
                         </p>
-                           { this.state.loading==="Wait" ? <RepoListItemLoading/> :   <RepoListInput itemList={this.state.list_repo.items} ClickRepo={EventClick}/>}
+                         <p className="control">
+                        <button className="button is-info is-large" type="submit"  ref='add_repo'>
+                        Add Repository
+                        </button>
+                        </p>
                       
+                           { this.state.loading==="Wait" ? <RepoListItemLoading/> :   <RepoListInput itemList={this.state.list_repo.items} ClickRepo={EventClick} ListallRepo={this.props.ListallRepo}/>}
+                           
                     </div>
-                    <button className="button is-info" type="submit"  ref='add_repo'>
-                    Add Repository
-                    </button>
+                     
                 </form>
             </div>
         )

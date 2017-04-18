@@ -15,7 +15,7 @@ class Dashboard extends React.Component {
             "vuejs/vue",
             "angular/angular",
             ],
-            Reponame : "",
+          
            
         };
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,12 +33,18 @@ class Dashboard extends React.Component {
         return ReactDOM.findDOMNode(this.userEntry).value;
     }
     handleSubmit(e) {
+        
           e.preventDefault();
             var form = e.target;
             var content = form.elements['reponame'].value;
              const arrayvar =this.state.repositoryNames ;
-           arrayvar.push(content);
-            this.setState({repositoryNames: arrayvar});
+            if( arrayvar.filter(value=> value===content).length===0){
+                arrayvar.push(content);
+                this.setState({repositoryNames: arrayvar});
+            }else{
+               form.querySelectorAll("button[type='submit']")[0].setAttribute("disabled", true) ; //Finding elements by class name does not work in Internet Explorer 8 
+            }
+            
  
     }
 
@@ -47,7 +53,7 @@ class Dashboard extends React.Component {
         return (
             <div>
                
-                <NewRepoForm repositoryArrays={repositoryArray}  handleSubmit={this.handleSubmit}        />
+                <NewRepoForm repositoryArrays={repositoryArray}  handleSubmit={this.handleSubmit}   ListallRepo={this.state.repositoryNames}    />
                 <RepositoryList repositoryArrays={repositoryArray} ClickRemove={this.btnremoveRepo} />
             </div>
         )

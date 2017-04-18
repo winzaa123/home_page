@@ -5,8 +5,8 @@ class RepoListItemLoading extends React.Component {
     render() {
 
     return (
-          <ul className="input-live-search"  >
-            <li className="input-live-search-list">
+          <ul className="input-lg-live-search"  >
+            <li className="input-lg-live-search-list">
                     <div className="card-content">
                     <div className="media">
 

@@ -13,7 +13,7 @@ class RepoListItem extends React.Component {
       
     return (
 
-      <li className="input-live-search-list" onClick={() => { this.props.ClickRepo(this,full_name) }} >
+      <li className="input-lg-live-search-list" onClick={() => { this.props.ClickRepo(this,full_name) }} >
             <div className="card-content">
               <div className="media">
                 <div className="media-left">
