@@ -33,6 +33,7 @@ export default class Stargazer extends React.Component {
     if (this.state.fetching) {
       return
     }
+   //  || document.body.offsetHeight < window.innerHeight wait test
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
       this.fetchStargazersList()
     }
