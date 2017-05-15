@@ -20,10 +20,32 @@ export default class Stargazer extends React.Component {
   }
 
   componentDidMount() {
+
     window.addEventListener('scroll', this._onScroll)
-    this.fetchStargazersList()
+    this.fetchStargazersFirst()
     
   }
+  fetchStargazersFirst(){  // run for all height
+         this.setState({
+      fetching: true
+    })
+
+    fetchStargazers(this.getScopeName(), this.state.currentPage)
+    .then((stargazers) => {
+      this.setState({
+        stargazers: this.state.stargazers.concat(stargazers),
+        fetching: false,
+        currentPage: this.state.currentPage + 1
+      })
+      if(document.body.offsetHeight < window.innerHeight){
+          this.fetchStargazersFirst();
+      }
+      
+    })
+
+   
+  }
+
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this._onScroll)
@@ -33,11 +55,12 @@ export default class Stargazer extends React.Component {
     if (this.state.fetching) {
       return
     }
-   //  || document.body.offsetHeight < window.innerHeight wait test
+   
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
       this.fetchStargazersList()
     }
   }
+
 
   fetchStargazersList() {
     // Set Loading state
